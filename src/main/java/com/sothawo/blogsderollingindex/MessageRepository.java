@@ -12,17 +12,15 @@
  */
 package com.sothawo.blogsderollingindex;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.elasticsearch.core.SearchHits;
+import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
 /**
  * @author Peter-Josef Meisch
  */
-@SpringBootApplication
-public class BlogSdeRollingIndexApplication {
+public interface MessageRepository extends ElasticsearchRepository<Message, String>, CustomMessageRepository<Message> {
 
-    public static void main(String[] args) {
-        SpringApplication.run(BlogSdeRollingIndexApplication.class, args);
-    }
+    SearchHits<Message> searchAllBy();
 
+    SearchHits<Message> searchAllByMessage(String text);
 }

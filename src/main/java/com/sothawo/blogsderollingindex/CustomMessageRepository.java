@@ -12,17 +12,12 @@
  */
 package com.sothawo.blogsderollingindex;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 /**
  * @author Peter-Josef Meisch
  */
-@SpringBootApplication
-public class BlogSdeRollingIndexApplication {
+public interface CustomMessageRepository<T> {
 
-    public static void main(String[] args) {
-        SpringApplication.run(BlogSdeRollingIndexApplication.class, args);
-    }
+    <S extends T> S save(S entity);
 
+    <S extends T> Iterable<S> saveAll(Iterable<S> entities);
 }
